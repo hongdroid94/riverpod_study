@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_study/pages/audo_dispose_family/auto_dispose_family_page.dart';
+import 'package:riverpod_study/pages/audo_dispose_family_test/auto_dispose_family_test_page.dart';
+import 'package:riverpod_study/pages/auto_dispose/auto_dispose_page.dart';
+import 'package:riverpod_study/pages/basic/basic_page.dart';
 import 'package:riverpod_study/pages/collections_page.dart';
+import 'package:riverpod_study/pages/family/family_page.dart';
 import 'package:riverpod_study/pages/hotel_list_page.dart';
 import 'package:riverpod_study/pages/method_page.dart';
 import 'package:riverpod_study/pages/mutable_person_page.dart';
@@ -58,7 +63,30 @@ class MyHomePage extends StatelessWidget {
               title: 'Method',
               child: MethodPage(),
             ),
-            CustomButton(title: 'Hotel List', child: HotelListPage()),
+            CustomButton(
+              title: 'Hotel List',
+              child: HotelListPage(),
+            ),
+            CustomButton(
+              title: 'Provider',
+              child: BasicPage(),
+            ),
+            CustomButton(
+              title: 'AutoDispose Provider',
+              child: AutoDisposePage(),
+            ),
+            CustomButton(
+              title: 'Family Provider',
+              child: FamilyPage(),
+            ),
+            CustomButton(
+              title: 'Auto Dispose Family Provider',
+              child: AutoDisposeFamilyPage(),
+            ),
+            CustomButton(
+              title: 'Auto Dispose Family Test Provider',
+              child: AutoDisposeFamilyTestPage(),
+            ),
           ],
         ),
       ),

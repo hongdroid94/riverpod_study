@@ -15,9 +15,8 @@ dependencies:
   flutter_riverpod: ^2.5.1
   freezed_annotation: ^2.4.1
   json_annotation: ^4.8.1
-
-
   cupertino_icons: ^1.0.6
+  equatable: ^2.0.5
 
 dev_dependencies:
   flutter_test:
@@ -26,6 +25,7 @@ dev_dependencies:
   riverpod_generator: ^2.4.0
   riverpod_lint: ^2.3.10
   custom_lint: ^0.6.4
+  flutter_lints: ^3.0.2
   freezed: ^2.5.2
   json_serializable: ^6.7.1
 
