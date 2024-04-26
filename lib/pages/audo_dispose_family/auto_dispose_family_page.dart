@@ -7,8 +7,8 @@ class AutoDisposeFamilyPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final helloJohn = ref.watch(autoDisposeFamilyHelloProvider('john'));
-    final helloJane = ref.watch(autoDisposeFamilyHelloProvider('jane'));
+    final helloJohn = ref.watch(autoDisposeFamilyHelloProvider(there: 'john'));
+    final helloJane = ref.watch(autoDisposeFamilyHelloProvider(there: 'jane'));
 
     ref.watch(counterProvider(const Counter(count: 0)));
     ref.watch(counterProvider(const Counter(count: 0)));
@@ -35,3 +35,5 @@ class AutoDisposeFamilyPage extends ConsumerWidget {
     );
   }
 }
+
+
