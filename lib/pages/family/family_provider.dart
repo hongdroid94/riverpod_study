@@ -1,7 +1,7 @@
 
 // import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-part 'family_provider.g.dart';
 
 // final familyHelloProvider = Provider.family<String, String>((ref, name) {
 //   ref.onDispose(() {
@@ -10,10 +10,17 @@ part 'family_provider.g.dart';
 //   return 'Hello $name';
 // },);
 
-@Riverpod(keepAlive: true)
-String familyHello (FamilyHelloRef ref, String there) { // family 사용하고 싶을 때 다음과 같이 구성하지만 변수명을 name으로 지정하면 안된다 (주의)
+// @Riverpod(keepAlive: true)
+// String familyHello (FamilyHelloRef ref, String there) { // family 사용하고 싶을 때 다음과 같이 구성하지만 변수명을 name으로 지정하면 안된다 (주의)
+//   ref.onDispose(() {
+//     print('[familyHelloProvider($there)] disposed');
+//   });
+//   return 'Hello $there';
+// }
+
+final familyCounterProvider = StateProvider.family<int,int>((ref, initialValue) {
   ref.onDispose(() {
-    print('[familyHelloProvider($there)] disposed');
+    print('[familyCounterProvider($initialValue] disposed');
   });
-  return 'Hello $there';
-}
+  return initialValue;
+});

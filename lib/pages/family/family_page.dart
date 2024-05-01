@@ -7,8 +7,11 @@ class FamilyPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final helloJohn = ref.watch(familyHelloProvider('john'));
-    final helloJane = ref.watch(familyHelloProvider('jane'));
+    // final helloJohn = ref.watch(familyHelloProvider('john'));
+    // final helloJane = ref.watch(familyHelloProvider('jane'));
+
+    final incVal = ref.watch(familyCounterProvider(10));
+    final decVal = ref.watch(familyCounterProvider(-10));
 
     return Scaffold(
       appBar: AppBar(
@@ -18,13 +21,44 @@ class FamilyPage extends ConsumerWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              helloJohn,
-              style: Theme.of(context).textTheme.headlineLarge,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  '$incVal',
+                  style: Theme.of(context).textTheme.headlineLarge,
+                ),
+                const SizedBox(width: 20),
+                FilledButton(
+                  onPressed: () {
+                    ref.read(familyCounterProvider(10).notifier).update((state) => state + 10);
+                  },
+                  child: Text(
+                    'Increment',
+                    style: TextStyle(fontSize: 18),
+                  ),
+                ),
+              ],
             ),
-            Text(
-              helloJane,
-              style: Theme.of(context).textTheme.headlineLarge,
+            const SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  '$decVal',
+                  style: Theme.of(context).textTheme.headlineLarge,
+                ),
+                const SizedBox(width: 20),
+                FilledButton(
+                  onPressed: () {
+                    ref.read(familyCounterProvider(-10).notifier).update((state) => state - 10);
+                  },
+                  child: Text(
+                    'Decrement',
+                    style: TextStyle(fontSize: 18),
+                  ),
+                ),
+              ],
             ),
           ],
         ),

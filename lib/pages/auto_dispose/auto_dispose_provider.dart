@@ -1,4 +1,5 @@
 // import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'auto_dispose_provider.g.dart';
 
@@ -10,11 +11,27 @@ part 'auto_dispose_provider.g.dart';
 //   return 'Hello';
 // },);
 
-@riverpod // 소문자와 대소문자의 차이는 소문자는 넘길 인자가 필요없을 때 ! 대문자는 넘길 인자 (옵션)을 적용하고 싶을 때 활용
-String autoDisposeHello (AutoDisposeHelloRef ref) {
-  print('[autoDisposeHelloProvider] created');
+// @riverpod // 소문자와 대소문자의 차이는 소문자는 넘길 인자가 필요없을 때 ! 대문자는 넘길 인자 (옵션)을 적용하고 싶을 때 활용
+// String autoDisposeHello (AutoDisposeHelloRef ref) {
+//   print('[autoDisposeHelloProvider] created');
+//   ref.onDispose(() {
+//     print('[autoDisposeHelloProvider] disposed');
+//   });
+//   return 'Hello';
+// }
+
+final autoDisposeCounterProvider = StateProvider.autoDispose<int>((ref) {
   ref.onDispose(() {
-    print('[autoDisposeHelloProvider] disposed');
+    print('[autoDisposeCounterProvider] disposed');
   });
-  return 'Hello';
+  return 0;
+});
+
+@Riverpod(keepAlive: false)
+String autoDisposeAge (AutoDisposeAgeRef ref) {
+  final age = ref.watch(autoDisposeCounterProvider);
+  ref.onDispose(() {
+    print('[autoDisposeAgeProvider] disposed');
+  });
+  return 'Hi! I am $age years old.';
 }

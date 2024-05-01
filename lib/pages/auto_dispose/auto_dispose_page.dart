@@ -7,16 +7,24 @@ class AutoDisposePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final hello = ref.watch(autoDisposeHelloProvider);
+    final value = ref.watch(autoDisposeAgeProvider);
+
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('AutoDisposeProvider'),
+        title: Text('AutoDisposeStateProvider'),
       ),
       body: Center(
         child: Text(
-          hello,
+          '$value',
           style: Theme.of(context).textTheme.headlineLarge,
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          ref.read(autoDisposeCounterProvider.notifier).update((state) => state + 10);
+        },
+        child: Icon(Icons.add),
       ),
     );
   }

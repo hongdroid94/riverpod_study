@@ -1,6 +1,23 @@
 // import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'basic_provder.g.dart';
+
+final counterProvider = StateProvider<int>((ref) {
+  ref.onDispose(() {
+    print('[counterProvider] disposed');
+  });
+  return 0;
+});
+
+@Riverpod(keepAlive: true)
+String age(AgeRef ref) {
+  ref.onDispose(() {
+    print('[ageProvider] disposed');
+  });
+  final age = ref.watch(counterProvider);
+  return 'Hi! I am $age years old.';
+}
 
 // final helloProvider = Provider<String>((ref) {
 //   ref.onDispose(() {

@@ -10,17 +10,39 @@ class BasicPage extends ConsumerStatefulWidget {
 }
 
 class _BasicPageState extends ConsumerState<BasicPage> {
-@override
+  @override
   Widget build(BuildContext context) {
+    // ref.listen<int>(counterProvider, (previous, next) {
+    //   if (next == 3) {
+    //     showDialog(context: context, builder: (context) {
+    //       return AlertDialog(
+    //         content: Text('counter : $next'),
+    //       );
+    //     },);
+    //   }
+    // });
     final hello = ref.watch(helloProvider);
     final world = ref.watch(worldProvider);
+    // final value = ref.watch(counterProvider);
+    final value = ref.watch(ageProvider);
+
+
 
     return Scaffold(
       appBar: AppBar(
         title: Text('Provder'),
       ),
       body: Center(
-        child: Text('$hello $world', style: Theme.of(context).textTheme.headlineLarge,),
+        child: Text(
+          '$value',
+          style: Theme.of(context).textTheme.headlineLarge,
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          ref.read(counterProvider.notifier).state++;
+        },
+        child: Icon(Icons.add),
       ),
     );
   }

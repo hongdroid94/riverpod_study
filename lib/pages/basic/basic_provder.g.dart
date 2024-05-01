@@ -6,6 +6,20 @@ part of 'basic_provder.dart';
 // RiverpodGenerator
 // **************************************************************************
 
+String _$ageHash() => r'450956799f9b4a228a6f0391f63b454242246dc1';
+
+/// See also [age].
+@ProviderFor(age)
+final ageProvider = Provider<String>.internal(
+  age,
+  name: r'ageProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$ageHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef AgeRef = ProviderRef<String>;
 String _$helloHash() => r'a36ff64c5cf07caab4180bb68baf1b928d4abb1a';
 
 /// See also [hello].
